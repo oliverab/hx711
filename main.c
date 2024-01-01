@@ -72,19 +72,28 @@ int main(void)
 
     // Disable the Global Interrupts 
     //INTERRUPT_GlobalInterruptDisable(); 
+    glcd_reset();
+    __delay_ms(100);
+    glcd_on();
+    glcd_clear();
+    glcd_adv_systext(26,20,"10Kg Load cell",14);
 
     printf("Hello\r\n");
     unsigned long tare=8335700;
     int totenthoz=570;
     while(1)
     {
-        unsigned long reading=ReadCount();
+      unsigned long reading=ReadCount();
       int tenths=(int)((long)(reading-tare)/570l );
       int oz=tenths/10;
       tenths-=oz*10;
       int pounds=oz/16;
       oz-=pounds*16;
       printf("Reading : %lu  Weight:%d pounds %d.%d oz\r\n",reading,pounds,oz,abs(tenths));
-      
-    }    
+      char buffer[20];
+      sprintf(buffer,"%3d pounds",pounds);
+      glcd_systext(42,40,buffer,10);   
+      sprintf(buffer,"%3d.%d oz",oz,abs(tenths));
+      glcd_systext(42,48,buffer,8);   
+    }
 }
