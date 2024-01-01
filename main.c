@@ -32,7 +32,7 @@
 */
 #include "mcc_generated_files/system/system.h"
 #include <stdio.h>
-
+#include "glcd128x64/glcd_lib.h"
 //------------------------------------------------------------------- 
 #define ADDO IO_DT_PORT
 #define ADSK IO_CK_LAT
