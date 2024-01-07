@@ -33,6 +33,7 @@
 #include "mcc_generated_files/system/system.h"
 #include <stdio.h>
 #include "glcd128x64/glcd_lib.h"
+#include "lgfont.h"
 //------------------------------------------------------------------- 
 #define ADDO IO_DT_PORT
 #define ADSK IO_CK_LAT
@@ -76,7 +77,10 @@ int main(void)
     __delay_ms(100);
     glcd_on();
     glcd_clear();
-    glcd_adv_systext(26,20,"10Kg Load cell",14);
+    glcd_adv_systext(26,4,"10Kg Load cell",14);
+    glcd_setfont(Terminal12x16, 32, 0, 12, 16);
+//    glcd_lgtext(14,16,"Large",5);
+//    glcd_lgtext(28,32,"Font",4);
 
     printf("Hello\r\n");
     unsigned long tare=8335700;
@@ -91,9 +95,9 @@ int main(void)
       oz-=pounds*16;
       printf("Reading : %lu  Weight:%d pounds %d.%d oz\r\n",reading,pounds,oz,abs(tenths));
       char buffer[20];
-      sprintf(buffer,"%3d pounds",pounds);
-      glcd_systext(42,40,buffer,10);   
+      sprintf(buffer,"%3d lb",pounds);
+      glcd_lgtext(12,16,buffer,6);   
       sprintf(buffer,"%3d.%d oz",oz,abs(tenths));
-      glcd_systext(42,48,buffer,8);   
+      glcd_lgtext(12,40,buffer,8);   
     }
 }

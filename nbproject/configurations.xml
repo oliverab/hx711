@@ -25,6 +25,7 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>glcd_hardware.h</itemPath>
+      <itemPath>lgfont.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -56,6 +57,7 @@
         </logicalFolder>
       </logicalFolder>
       <itemPath>main.c</itemPath>
+      <itemPath>lgfont.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
